@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Launch Countdown</title>
+    <style>
+        /* Background with animated gradient */
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            color: white;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            background: linear-gradient(45deg, #000428, #004e92);
+            background-size: 400% 400%;
+            animation: backgroundAnimation 10s infinite alternate;
+        }
+
+        /* Gradient animation */
+        @keyframes backgroundAnimation {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+
+        h1 {
+            font-size: 3em;
+            text-shadow: 2px 2px 15px rgba(255, 255, 255, 0.8);
+            opacity: 0;
+            animation: fadeIn 2s forwards;
+        }
+
+        p {
+            font-size: 1.5em;
+            opacity: 0;
+            animation: fadeIn 2s forwards 0.5s;
+        }
+
+        #countdown {
+            font-size: 3em;
+            font-weight: bold;
+            padding: 20px 40px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 183, 255, 0.7);
+            display: inline-block;
+            opacity: 0;
+            animation: fadeIn 2s forwards 1s, glow 1.5s infinite alternate;
+        }
+
+        /* Countdown glow effect */
+        @keyframes glow {
+            from { box-shadow: 0 0 10px rgba(0, 183, 255, 0.5); }
+            to { box-shadow: 0 0 25px rgba(0, 183, 255, 1); }
+        }
+
+        /* Fade-in effect */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Fade-out before redirection */
+        @keyframes fadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>🚀 Our Website is Launching Soon! 🚀</h1>
+    <p>Stay tuned! The site will be live in:</p>
+    <div id="countdown"></div>
+
+    <script>
+        // Set the activation time: March 17, 2025, 07:00 AM (YYYY, MM-1, DD, HH, MM, SS)
+        var activationTime = new Date(2025, 2, 17, 7, 0, 0).getTime();
+
+        function updateCountdown() {
+            var now = new Date().getTime();
+            var timeLeft = activationTime - now;
+
+            if (timeLeft > 0) {
+                var hours = Math.floor(timeLeft / (1000 * 60 * 60));
+                var minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+                document.getElementById("countdown").innerHTML =
+                    `${hours}h ${minutes}m ${seconds}s`;
+            } else {
+                document.body.style.animation = "fadeOut 1s forwards";
+                setTimeout(() => {
+                    window.location.href = "https://nas-44.github.io/hihmresult/"; // Redirect to main site
+                }, 1000);
+            }
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+    </script>
+
+</body>
+</html>
