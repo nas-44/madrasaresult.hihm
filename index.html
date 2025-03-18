@@ -32,7 +32,7 @@
             font-size: 2em;
             text-shadow: 2px 2px 15px rgba(255, 255, 255, 0.8);
             opacity: 0;
-            animation: fadeIn 2s forwards;
+            animation: spinner 2s forwards;
         }
 
         p {
@@ -81,7 +81,7 @@
 
     <script>
         // Set the activation time: March 18, 2025, 05:00 PM (YYYY, MM-1, DD, HH, MM, SS)
-        var activationTime = new Date(2025, 2, 18, 5, 0, 00).getTime();
+        var activationTime = new Date(2025, 2, 18, 5, 0, 0).getTime();
 
         function updateCountdown() {
             var now = new Date().getTime();
